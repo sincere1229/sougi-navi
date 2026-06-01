@@ -3,179 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>葬儀ナビ｜はじめての喪主・葬儀後の手続きをAIと一緒に整理</title>
-<meta name="description" content="突然の訃報・危篤・葬儀後の手続きで何から始めればいいかわからない方へ。状況を選ぶだけでAIが今やることを整理します。無料・登録不要。">
+<title>葬儀ナビ｜はじめての喪主・葬儀後の手続きを登録不要で整理</title>
+<meta name="description" content="突然の訃報・危篤・葬儀後の手続きで何から始めればいいかわからない方へ。メールアドレス・個人情報登録不要。状況を選ぶだけでAIが今やることを整理します。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #2c3e6b;
-  --navy-light: #eef0f7;
-  --navy-mid: #4a5a9e;
-  --navy-dark: #1a2550;
-  --gold: #b8860b;
-  --gold-light: #fdf8ee;
-  --urgent: #c0392b;
-  --urgent-light: #fdf0ee;
-  --text: #2c2c2c;
-  --text-sub: #666;
-  --text-light: #999;
-  --bg: #fafaf8;
-  --white: #fff;
-  --border: #e5e5e0;
-  --radius: 12px;
+  --navy: #2c3e6b; --navy-light: #eef0f7; --navy-mid: #4a5a9e; --navy-dark: #1a2550;
+  --gold: #b8860b; --gold-light: #fdf8ee;
+  --urgent: #c0392b; --urgent-light: #fdf0ee;
+  --text: #2c2c2c; --text-sub: #666; --text-light: #999;
+  --bg: #fafaf8; --white: #fff; --border: #e5e5e0; --radius: 12px;
   --shadow: rgba(44,62,107,0.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Noto Sans JP',sans-serif;font-weight:300;color:var(--text);background:var(--bg);line-height:1.8}
+body{font-family:'Noto Sans JP',sans-serif;font-weight:400;color:var(--text);background:var(--bg);line-height:1.85;font-size:18px}
 
-/* HEADER */
 header{background:var(--white);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo{font-family:'Noto Serif JP',serif;font-size:18px;color:var(--navy-dark);font-weight:600;text-decoration:none}
-.logo span{font-size:12px;display:block;color:var(--text-sub);font-weight:300;font-family:'Noto Sans JP',sans-serif;margin-top:-2px}
-nav{display:flex;gap:20px;font-size:13px}
+.logo{font-family:'Noto Serif JP',serif;font-size:20px;color:var(--navy-dark);font-weight:600;text-decoration:none}
+.logo span{font-size:13px;display:block;color:var(--text-sub);font-weight:400;font-family:'Noto Sans JP',sans-serif;margin-top:-2px}
+nav{display:flex;gap:20px;font-size:14px}
 nav a{color:var(--text-sub);text-decoration:none}
 nav a:hover{color:var(--navy)}
 
 /* HERO */
 .hero{background:linear-gradient(135deg,#eef0f7 0%,#fafaf8 60%,#fdf8ee 100%);padding:60px 24px 48px;text-align:center}
-.hero-badge{display:inline-block;background:var(--navy-light);color:var(--navy-dark);font-size:12px;padding:4px 14px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(44,62,107,0.2)}
-.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(20px,4vw,32px);font-weight:600;color:var(--navy-dark);line-height:1.6;margin-bottom:16px}
-.hero p{font-size:15px;color:var(--text-sub);max-width:560px;margin:0 auto 32px;line-height:2}
+.hero-badge{display:inline-block;background:var(--navy-light);color:var(--navy-dark);font-size:14px;padding:5px 16px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(44,62,107,0.2);font-weight:500}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(22px,4vw,34px);font-weight:600;color:var(--navy-dark);line-height:1.5;margin-bottom:16px}
+.hero-sub{font-size:17px;color:var(--text-sub);max-width:580px;margin:0 auto 12px;line-height:1.9}
+.hero-trust{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin:16px 0 32px;font-size:15px;color:var(--navy-dark)}
+.hero-trust span{display:flex;align-items:center;gap:5px;background:var(--navy-light);padding:6px 14px;border-radius:20px;font-weight:500}
+.hero-note{font-size:13px;color:var(--text-sub);margin-top:12px}
 
-/* 状況選択ボタン（4択）*/
-.situation-section{max-width:700px;margin:0 auto;padding:0 16px 48px}
-.situation-title{font-size:14px;color:var(--text-sub);text-align:center;margin-bottom:20px}
-.situation-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.sit-btn{padding:20px 16px;border-radius:var(--radius);border:2px solid var(--border);background:var(--white);cursor:pointer;text-align:center;transition:all 0.2s;font-family:'Noto Sans JP',sans-serif}
-.sit-btn:hover{border-color:var(--navy-mid);box-shadow:0 4px 16px var(--shadow)}
+/* TRUST BAR */
+.trust{background:var(--white);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.trust-item{font-size:15px;color:var(--text-sub);display:flex;align-items:center;gap:6px}
+
+/* 状況選択 */
+.situation-section{max-width:700px;margin:0 auto;padding:40px 16px 16px}
+.sit-section-title{font-family:'Noto Serif JP',serif;font-size:22px;color:var(--navy-dark);text-align:center;margin-bottom:8px;font-weight:600}
+.sit-section-sub{font-size:16px;color:var(--text-sub);text-align:center;margin-bottom:24px}
+.situation-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+.sit-btn{padding:22px 16px;border-radius:var(--radius);border:2px solid var(--border);background:var(--white);cursor:pointer;text-align:center;transition:all 0.2s;font-family:'Noto Sans JP',sans-serif;box-shadow:var(--shadow)}
+.sit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--shadow)}
 .sit-btn.urgent{border-color:var(--urgent);background:var(--urgent-light)}
 .sit-btn.urgent:hover{background:#fce8e6}
 .sit-btn.kikiyu{border-color:var(--gold);background:var(--gold-light)}
 .sit-btn.kikiyu:hover{background:#fdf4e0}
-.sit-icon{font-size:28px;margin-bottom:8px}
-.sit-label{font-size:14px;font-weight:500;color:var(--navy-dark);margin-bottom:4px}
-.sit-sub{font-size:12px;color:var(--text-sub);line-height:1.5}
+.sit-icon{font-size:32px;margin-bottom:10px}
+.sit-label{font-size:17px;font-weight:700;color:var(--navy-dark);margin-bottom:6px}
+.sit-sub{font-size:14px;color:var(--text-sub);line-height:1.5}
 .sit-btn.urgent .sit-label{color:var(--urgent)}
 .sit-btn.kikiyu .sit-label{color:var(--gold)}
 
 /* AI CHAT AREA */
-.ai-section{max-width:700px;margin:0 auto;padding:0 16px 48px}
+.ai-section{max-width:700px;margin:0 auto;padding:0 16px 48px;display:none}
 .ai-card{background:var(--white);border-radius:16px;border:1px solid var(--border);overflow:hidden;box-shadow:0 4px 24px var(--shadow)}
-.ai-header{background:var(--navy);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:10px}
+.ai-header{background:var(--navy);color:#fff;padding:18px 20px;display:flex;align-items:center;gap:12px}
 .ai-header.urgent-header{background:var(--urgent)}
 .ai-header.kikiyu-header{background:var(--gold)}
-.ai-header-icon{width:32px;height:32px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px}
-.ai-header-text h2{font-size:15px;font-weight:500;margin:0}
-.ai-header-text p{font-size:12px;opacity:0.85;margin:0}
-.ai-body{padding:20px}
-.step-label{font-size:12px;color:var(--navy);font-weight:500;margin-bottom:8px;margin-top:16px}
+.ai-header-icon{width:36px;height:36px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px}
+.ai-header-text h2{font-size:17px;font-weight:600;margin:0}
+.ai-header-text p{font-size:13px;opacity:0.85;margin:0}
+.ai-body{padding:24px}
+.step-label{font-size:15px;color:var(--navy);font-weight:700;margin-bottom:10px;margin-top:20px}
 .step-label:first-child{margin-top:0}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
-.chip{padding:7px 14px;border-radius:20px;border:1px solid var(--border);font-size:13px;cursor:pointer;background:var(--white);color:var(--text);transition:all 0.15s;font-family:'Noto Sans JP',sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:4px}
+.chip{padding:10px 18px;border-radius:20px;border:1.5px solid var(--border);font-size:16px;cursor:pointer;background:var(--white);color:var(--text);transition:all 0.15s;font-family:'Noto Sans JP',sans-serif}
 .chip:hover{border-color:var(--navy-mid);color:var(--navy)}
-.chip.sel{background:var(--navy-light);border-color:var(--navy);color:var(--navy-dark);font-weight:500}
-.chip.sel-urgent{background:var(--urgent-light);border-color:var(--urgent);color:var(--urgent);font-weight:500}
-.chip.sel-kikiyu{background:var(--gold-light);border-color:var(--gold);color:var(--gold);font-weight:500}
-.concern-area{margin-top:16px}
-.concern-area label{font-size:13px;color:var(--text-sub);display:block;margin-bottom:8px}
-textarea{width:100%;border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-size:14px;font-family:'Noto Sans JP',sans-serif;font-weight:300;color:var(--text);resize:none;height:80px;line-height:1.7;background:var(--bg)}
+.chip.sel{background:var(--navy-light);border-color:var(--navy);color:var(--navy-dark);font-weight:700}
+.chip.sel-urgent{background:var(--urgent-light);border-color:var(--urgent);color:var(--urgent);font-weight:700}
+.chip.sel-kikiyu{background:var(--gold-light);border-color:var(--gold);color:var(--gold);font-weight:700}
+.concern-area{margin-top:20px}
+.concern-area label{font-size:16px;color:var(--text-sub);display:block;margin-bottom:10px}
+textarea{width:100%;border:1.5px solid var(--border);border-radius:var(--radius);padding:14px;font-size:16px;font-family:'Noto Sans JP',sans-serif;color:var(--text);resize:none;height:90px;line-height:1.7;background:var(--bg)}
 textarea:focus{outline:none;border-color:var(--navy-mid)}
-.btn-ask{width:100%;margin-top:16px;padding:14px;background:var(--navy);color:#fff;border:none;border-radius:var(--radius);font-size:15px;font-family:'Noto Sans JP',sans-serif;cursor:pointer;font-weight:500;transition:background 0.2s}
+.btn-ask{width:100%;margin-top:18px;padding:16px;background:var(--navy);color:#fff;border:none;border-radius:var(--radius);font-size:18px;font-family:'Noto Sans JP',sans-serif;cursor:pointer;font-weight:700;transition:background 0.2s}
 .btn-ask:hover{background:var(--navy-dark)}
 .btn-ask:disabled{opacity:0.5;cursor:not-allowed}
 .btn-ask.urgent-btn{background:var(--urgent)}
 .btn-ask.urgent-btn:hover{background:#a93226}
 .btn-ask.kikiyu-btn{background:var(--gold)}
-.btn-ask.kikiyu-btn:hover{background:#9a7209}
+.back-btn-ai{display:inline-block;margin-bottom:16px;font-size:15px;color:var(--text-sub);cursor:pointer;background:none;border:none;font-family:'Noto Sans JP',sans-serif;padding:0}
+.back-btn-ai:hover{color:var(--navy)}
 
-/* 1タップ免責 */
-.disclaimer-check{margin-top:12px;background:var(--navy-light);border-radius:var(--radius);padding:12px 16px;font-size:12px;color:var(--navy-dark);line-height:1.8}
-.disclaimer-check label{display:flex;align-items:flex-start;gap:8px;cursor:pointer}
-.disclaimer-check input{margin-top:3px;flex-shrink:0}
+.response-wrap{display:none;margin-top:20px;border-top:1px solid var(--border);padding-top:20px}
+.response-label{font-size:15px;color:var(--navy);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.response-label::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--navy);display:inline-block}
+.response-text{font-size:17px;line-height:2;color:var(--text);white-space:pre-wrap}
+.response-footer{margin-top:18px;padding:14px;background:var(--navy-light);border-radius:var(--radius);font-size:15px;color:var(--navy-dark);line-height:1.85}
 
-.response-wrap{display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px}
-.response-label{font-size:12px;color:var(--navy);font-weight:500;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.response-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--navy);display:inline-block}
-.response-text{font-size:14px;line-height:2;color:var(--text);white-space:pre-wrap}
-.response-footer{margin-top:16px;padding:12px;background:var(--navy-light);border-radius:var(--radius);font-size:12px;color:var(--navy-dark);line-height:1.8}
+/* AI後アフィリ */
+.ai-affili{margin-top:20px;display:grid;gap:12px}
+.ai-affili-title{font-size:15px;font-weight:700;color:var(--text-sub);margin-bottom:4px;text-align:center}
 
-/* アフィリリンク */
-.affili-cards{margin-top:20px;display:grid;gap:10px}
-.affili-card{background:var(--gold-light);border:1px solid rgba(184,134,11,0.3);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);transition:all 0.2s}
-.affili-card:hover{box-shadow:0 4px 16px var(--shadow);transform:translateY(-1px)}
-.affili-card-icon{font-size:24px;flex-shrink:0}
-.affili-card-text{font-size:13px;line-height:1.6}
-.affili-card-text strong{display:block;font-size:14px;color:var(--gold);margin-bottom:2px}
-.affili-card-badge{display:inline-block;font-size:11px;background:var(--urgent);color:#fff;padding:2px 8px;border-radius:10px;margin-left:6px}
+/* アフィリボタン共通 */
+.affili-btn{display:block;text-align:center;text-decoration:none;font-weight:700;font-family:'Noto Sans JP',sans-serif;border-radius:50px;padding:13px 18px;font-size:16px;transition:transform 0.2s,opacity 0.2s;border:none;cursor:pointer}
+.affili-btn:hover{transform:translateY(-1px);opacity:0.92}
+.btn-amazon{background:#FF9900;color:#fff}
+.btn-rakuten{background:#BF0000;color:#fff}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-gold{background:var(--gold);color:#fff}
+
+/* アフィリセクション */
+.affili-section{max-width:700px;margin:0 auto;padding:0 16px 40px}
+.affili-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-bottom:16px}
+.affili-card-title{font-size:17px;font-weight:700;color:var(--navy-dark);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.affili-card-desc{font-size:15px;color:var(--text-sub);margin-bottom:14px;line-height:1.75}
+.affili-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:500px){.affili-grid{grid-template-columns:1fr}}
+
+/* カテゴリ */
+.section{max-width:1000px;margin:0 auto;padding:40px 20px}
+.section-title{font-family:'Noto Serif JP',serif;font-size:24px;color:var(--navy-dark);margin-bottom:8px;font-weight:600}
+.section-sub{font-size:16px;color:var(--text-sub);margin-bottom:28px}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.cat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 18px;text-decoration:none;color:var(--text);transition:all 0.2s;display:block}
+.cat-card:hover{border-color:var(--navy-mid);box-shadow:0 4px 16px var(--shadow);transform:translateY(-2px)}
+.cat-icon{font-size:28px;margin-bottom:12px}
+.cat-name{font-size:17px;font-weight:700;color:var(--navy-dark);margin-bottom:6px}
+.cat-desc{font-size:14px;color:var(--text-sub);line-height:1.6}
+.cat-tag{display:inline-block;margin-top:10px;font-size:12px;background:var(--gold-light);color:var(--gold);padding:3px 10px;border-radius:10px;font-weight:500}
+.cat-tag.urgent-tag{background:var(--urgent-light);color:var(--urgent)}
+
+/* コラム */
+.column-section{max-width:700px;margin:0 auto;padding:0 16px 48px}
+.column-section-title{font-family:'Noto Serif JP',serif;font-size:22px;color:var(--navy-dark);margin-bottom:8px;font-weight:600;text-align:center}
+.column-section-sub{font-size:16px;color:var(--text-sub);text-align:center;margin-bottom:24px}
+.column-grid{display:grid;gap:16px}
+.column-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.column-tag{display:inline-block;background:var(--navy-light);color:var(--navy);font-size:13px;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:10px}
+.column-card h3{font-size:18px;font-weight:700;margin-bottom:8px;line-height:1.5;cursor:pointer;color:var(--navy-dark)}
+.column-card h3:hover{text-decoration:underline}
+.column-card p{font-size:15px;color:var(--text-sub);line-height:1.75;margin-bottom:14px}
+.read-more-btn{display:block;text-align:center;text-decoration:none;font-weight:700;font-family:'Noto Sans JP',sans-serif;border-radius:50px;padding:12px 20px;font-size:16px;background:var(--navy-light);color:var(--navy);border:2px solid var(--navy);transition:all 0.2s}
+.read-more-btn:hover{background:var(--navy);color:#fff}
+
+/* 急ぎの準備バナー */
+.urgent-banner{background:linear-gradient(135deg,var(--urgent),#e74c3c);color:#fff;border-radius:var(--radius);padding:28px 24px;text-align:center;margin:0 16px 32px;max-width:700px;margin-left:auto;margin-right:auto}
+.urgent-banner h2{font-size:20px;margin-bottom:10px}
+.urgent-banner p{font-size:16px;opacity:0.95;margin-bottom:20px}
+
+/* 書籍 */
+.books-section{max-width:700px;margin:0 auto;padding:0 16px 48px}
+.books-card{background:linear-gradient(135deg,#fff8e1,#fff3cd);border:1px solid #ffc107;border-radius:var(--radius);padding:24px;text-align:center}
+.books-card h3{font-size:19px;font-weight:700;margin-bottom:8px;color:#856404}
+.books-card p{font-size:16px;color:#6b5a00;margin-bottom:16px}
+.books-btn{display:inline-block;background:#FF9900;color:#fff;font-weight:700;font-size:17px;padding:14px 32px;border-radius:50px;text-decoration:none;transition:transform 0.2s}
+.books-btn:hover{transform:translateY(-1px)}
+
+.affili-note{max-width:700px;margin:0 auto 24px;padding:0 16px}
+.affili-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;font-size:14px;color:var(--text-light);line-height:1.85}
+.disclaimer{max-width:700px;margin:0 auto 20px;padding:0 16px}
+.disclaimer-box{background:var(--navy-light);border-radius:var(--radius);padding:16px 20px;font-size:14px;color:var(--navy-dark);line-height:1.85;border-left:3px solid var(--navy)}
+
+footer{background:var(--navy-dark);color:rgba(255,255,255,0.75);padding:36px 24px;text-align:center;font-size:15px;line-height:2.2}
+footer a{color:rgba(255,255,255,0.65);text-decoration:none}
+footer a:hover{color:#fff;text-decoration:underline}
+.footer-nav{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:14px}
+
+.back-to-top{position:fixed;bottom:24px;right:20px;background:var(--navy);color:#fff;border:none;border-radius:50px;padding:14px 22px;font-size:16px;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:200;opacity:0;pointer-events:none;transition:opacity 0.3s,transform 0.2s}
+.back-to-top.visible{opacity:1;pointer-events:auto}
+.back-to-top:hover{transform:translateY(-2px)}
 
 .loading-dots span{animation:blink 1.2s infinite}
 .loading-dots span:nth-child(2){animation-delay:0.2s}
 .loading-dots span:nth-child(3){animation-delay:0.4s}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
-
-/* CATEGORY SECTION */
-.section{max-width:1000px;margin:0 auto;padding:40px 20px}
-.section-title{font-family:'Noto Serif JP',serif;font-size:20px;color:var(--navy-dark);margin-bottom:8px;font-weight:600}
-.section-sub{font-size:13px;color:var(--text-sub);margin-bottom:24px}
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
-.cat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:18px 16px;text-decoration:none;color:var(--text);transition:all 0.2s;display:block}
-.cat-card:hover{border-color:var(--navy-mid);box-shadow:0 4px 16px var(--shadow);transform:translateY(-2px)}
-.cat-icon{font-size:24px;margin-bottom:10px}
-.cat-name{font-size:14px;font-weight:500;color:var(--navy-dark);margin-bottom:4px}
-.cat-desc{font-size:12px;color:var(--text-sub);line-height:1.6}
-.cat-tag{display:inline-block;margin-top:8px;font-size:11px;background:var(--gold-light);color:var(--gold);padding:2px 8px;border-radius:10px}
-.cat-tag.urgent-tag{background:var(--urgent-light);color:var(--urgent)}
-
-/* アフィリエイト開示 */
-.affili-note{max-width:700px;margin:0 auto 40px;padding:0 16px}
-.affili-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;font-size:12px;color:var(--text-light);line-height:1.8}
-
-/* 免責 */
-.disclaimer{max-width:700px;margin:0 auto 20px;padding:0 16px}
-.disclaimer-box{background:var(--navy-light);border-radius:var(--radius);padding:14px 18px;font-size:12px;color:var(--navy-dark);line-height:1.8;border-left:3px solid var(--navy)}
-
-/* FOOTER */
-footer{background:var(--navy-dark);color:rgba(255,255,255,0.7);padding:32px 24px;text-align:center;font-size:12px;line-height:2}
-footer a{color:rgba(255,255,255,0.6);text-decoration:none}
-
-/* SECTION DIVIDER */
-.divider{max-width:700px;margin:0 auto 32px;padding:0 16px}
-.divider-line{border:none;border-top:1px solid var(--border)}
-
-/* BACK BTN */
-.back-btn{display:inline-block;margin-bottom:16px;font-size:13px;color:var(--text-sub);cursor:pointer;background:none;border:none;font-family:'Noto Sans JP',sans-serif;padding:0}
-.back-btn:hover{color:var(--navy)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeIn 0.5s ease forwards}
 
 @media(max-width:600px){
   nav{display:none}
   .hero{padding:40px 16px 32px}
   .situation-grid{grid-template-columns:1fr 1fr}
   .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-trust{gap:10px}
 }
 </style>
 </head>
 <body>
 
 <header>
-  <a href="/" class="logo">葬儀ナビ<span>はじめての喪主・葬儀後の手続きをAIと整理</span></a>
+  <a href="/" class="logo">葬儀ナビ<span>はじめての喪主・葬儀後の手続きを登録不要で整理</span></a>
   <nav>
     <a href="#situation">状況を選ぶ</a>
     <a href="#categories">カテゴリ</a>
+    <a href="#column">コラム</a>
     <a href="#disclaimer">免責</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">無料・登録不要・AI相談</div>
+  <div class="hero-badge">📋 メールアドレス・個人情報の登録一切不要</div>
   <h1>突然、家族側の責任者に<br>なってしまったあなたへ。</h1>
-  <p>何から始めればいいか、今すぐ整理します。<br>状況を選ぶだけで、今やることをAIが一緒に整理します。</p>
+  <p class="hero-sub">
+    何から始めればいいか、今すぐ整理します。<br>
+    状況を選ぶだけで、AIが今やることを一緒に整理します。
+  </p>
+  <div class="hero-trust">
+    <span>✅ 登録不要</span>
+    <span>✅ 個人情報不要</span>
+    <span>✅ 葬儀社への勧誘なし</span>
+    <span>✅ 24時間対応</span>
+  </div>
+  <a href="#situation" class="affili-btn btn-navy" style="display:inline-block;padding:18px 44px;font-size:19px;border-radius:50px;text-decoration:none;box-shadow:0 4px 16px rgba(44,62,107,0.3);">▶ 状況を選んで今すぐ整理する</a>
+  <div class="hero-note">葬儀社への個人情報送信・勧誘は一切行いません</div>
 </section>
 
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-item">⛩️ 葬儀社への勧誘なし</div>
+  <div class="trust-item">⚖️ 中立・公平な情報提供</div>
+  <div class="trust-item">🕊️ 冷静に、一つずつ整理</div>
+  <div class="trust-item">📋 手続きの順番がわかる</div>
+</div>
+
 <!-- 状況選択 -->
-<div class="situation-section" id="situation">
-  <div class="situation-title">今の状況に近いものを選んでください</div>
+<div class="situation-section fade-in" id="situation">
+  <div class="sit-section-title">今の状況を選んでください</div>
+  <div class="sit-section-sub">状況に合わせて、今やることをAIが整理します</div>
   <div class="situation-grid">
     <button class="sit-btn urgent" onclick="showMode('hospital')">
       <div class="sit-icon">🏥</div>
@@ -200,8 +249,8 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
   </div>
 </div>
 
-<!-- AI相談エリア（動的に表示） -->
-<div class="ai-section" id="ai-section" style="display:none">
+<!-- AI相談エリア -->
+<div class="ai-section" id="ai-section">
   <div class="ai-card" id="ai-card">
     <div class="ai-header" id="ai-header">
       <div class="ai-header-icon" id="ai-header-icon">⛩️</div>
@@ -211,9 +260,9 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
       </div>
     </div>
     <div class="ai-body">
-      <button class="back-btn" onclick="hideMode()">← 状況を選び直す</button>
+      <button class="back-btn-ai" onclick="hideMode()">← 状況を選び直す</button>
 
-      <!-- 病院・施設モード -->
+      <!-- 病院・自宅モード -->
       <div id="mode-urgent" style="display:none">
         <div class="step-label">亡くなられた場所</div>
         <div class="chips" id="chips-place">
@@ -238,7 +287,7 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
           <div class="chip" onclick="pick(this,'concern_u','urgent')">お布施・費用の相場</div>
         </div>
         <div class="concern-area">
-          <label>その他、気になること・状況（任意）</label>
+          <label>その他、気になること（任意）</label>
           <textarea id="concern-urgent" placeholder="例：父が昨夜病院で亡くなりました。喪主は自分ですが、何から始めればよいか全くわかりません…"></textarea>
         </div>
       </div>
@@ -258,11 +307,10 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
           <div class="chip" onclick="pick(this,'kikiyu_w','kikiyu')">喪服・数珠を今から用意したい</div>
           <div class="chip" onclick="pick(this,'kikiyu_w','kikiyu')">費用の概算を知りたい</div>
           <div class="chip" onclick="pick(this,'kikiyu_w','kikiyu')">親族への連絡のタイミング</div>
-          <div class="chip" onclick="pick(this,'kikiyu_w','kikiyu')">会社への忌引き申請の準備</div>
         </div>
         <div class="concern-area">
           <label>状況・不安なこと（任意）</label>
-          <textarea id="concern-kikiyu" placeholder="例：母が余命3ヶ月と言われました。今から何を準備しておけばよいか、葬儀社に今から相談してもいいのか…"></textarea>
+          <textarea id="concern-kikiyu" placeholder="例：母が余命3ヶ月と言われました。今から何を準備しておけばよいか…"></textarea>
         </div>
       </div>
 
@@ -284,13 +332,7 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
         </div>
         <div class="concern-area">
           <label>状況・困っていること（任意）</label>
-          <textarea id="concern-tetsuzuki" placeholder="例：葬儀が終わり1週間経ちましたが、銀行と年金と役所、どの順番で行けばいいか全くわかりません…"></textarea>
-        </div>
-        <div class="disclaimer-check">
-          <label>
-            <input type="checkbox" id="disclaimer-agree">
-            本シミュレーションは一般的な行政手続きの流れを示すものです。具体的な相続税申告等については必ず税理士等の専門家にご相談ください。同意して続ける。
-          </label>
+          <textarea id="concern-tetsuzuki" placeholder="例：葬儀が終わり1週間経ちましたが、銀行と年金と役所、どの順番で行けばいいか…"></textarea>
         </div>
       </div>
 
@@ -300,13 +342,91 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
         <div class="response-label">AIからのご提案</div>
         <div class="response-text" id="response-text"></div>
         <div class="response-footer" id="response-footer" style="display:none">
-          ※ このサービスはAIによる一般的な情報提供です。具体的な手続きや判断は専門家・各機関にご確認ください。
+          ※ AIによる一般的な情報提供です。具体的な手続きや判断は専門家・各機関にご確認ください。
         </div>
-        <!-- アフィリリンク（状況別） -->
-        <div class="affili-cards" id="affili-links" style="display:none"></div>
+        <div class="ai-affili" id="ai-affili" style="display:none">
+          <div class="ai-affili-title">💡 今すぐ準備しておきたいもの</div>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- 急ぎの準備バナー -->
+<div class="urgent-banner">
+  <h2>🚨 急ぎで喪服・数珠が必要な方へ</h2>
+  <p>Amazonプライムなら翌日配送可能。今すぐ確認してください。</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:440px;margin:0 auto;">
+    <a href="https://www.amazon.co.jp/s?k=喪服+レディース+セット&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon">🛒 喪服（女性）Amazon</a>
+    <a href="https://www.amazon.co.jp/s?k=喪服+メンズ+セット&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon">🛒 喪服（男性）Amazon</a>
+    <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F喪服%20レディース%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten">🛒 喪服（女性）楽天</a>
+    <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F喪服%20メンズ%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten">🛒 喪服（男性）楽天</a>
+  </div>
+</div>
+
+<!-- アフィリエイト商品エリア -->
+<div class="affili-section">
+
+  <!-- 喪服・装具 -->
+  <div class="affili-card">
+    <div class="affili-card-title">👔 喪服・礼服・装具一式</div>
+    <div class="affili-card-desc">突然の訃報で喪服が手元にない方へ。翌日配送可能なAmazonプライム対応商品も多数あります。</div>
+    <div class="affili-grid">
+      <a href="https://www.amazon.co.jp/s?k=喪服+レディース+フォーマル&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">🛒 喪服・礼服（女性）Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F喪服%20レディース%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">🛒 喪服・礼服（女性）楽天</a>
+      <a href="https://www.amazon.co.jp/s?k=喪服+メンズ+礼服&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">🛒 喪服・礼服（男性）Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F喪服%20メンズ%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">🛒 喪服・礼服（男性）楽天</a>
+      <a href="https://www.amazon.co.jp/s?k=数珠+喪服+セット&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">🛒 数珠・袱紗・香典袋セット Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F数珠%20袱紗%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">🛒 数珠・袱紗・香典袋セット 楽天</a>
+    </div>
+  </div>
+
+  <!-- 子供の喪服 -->
+  <div class="affili-card">
+    <div class="affili-card-title">👦 子供の喪服・フォーマルウェア</div>
+    <div class="affili-card-desc">お子さんの喪服は普段使いの機会が少なく急に必要になりがちです。サイズ豊富な商品をご確認ください。</div>
+    <div class="affili-grid">
+      <a href="https://www.amazon.co.jp/s?k=子供+喪服+フォーマル&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">🛒 子供の喪服 Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F子供%20喪服%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">🛒 子供の喪服 楽天</a>
+    </div>
+  </div>
+
+  <!-- 供花・お香典 -->
+  <div class="affili-card">
+    <div class="affili-card-title">🌸 供花・線香・お供え物</div>
+    <div class="affili-card-desc">遠方で参列できない方への供花・線香のお届けも可能です。</div>
+    <div class="affili-grid">
+      <a href="https://www.amazon.co.jp/s?k=供花+お悔やみ+フラワー&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">🛒 供花・お悔やみギフト Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F供花%20お悔やみ%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">🛒 供花・お悔やみギフト 楽天</a>
+      <a href="https://www.amazon.co.jp/s?k=線香+ギフト+高級&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">🛒 線香・ろうそくギフト Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F線香%20ギフト%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">🛒 線香・ろうそくギフト 楽天</a>
+    </div>
+  </div>
+
+  <!-- 仏壇・位牌 -->
+  <div class="affili-card">
+    <div class="affili-card-title">🏮 仏壇・位牌・仏具</div>
+    <div class="affili-card-desc">四十九日までに位牌・仏壇の準備が必要です。コンパクトな現代仏壇から伝統的なものまで幅広く揃っています。</div>
+    <div class="affili-grid">
+      <a href="https://www.amazon.co.jp/s?k=位牌+モダン&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">🛒 位牌 Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F位牌%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">🛒 位牌 楽天</a>
+      <a href="https://www.amazon.co.jp/s?k=仏壇+コンパクト+モダン&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">🛒 仏壇・仏具セット Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F仏壇%20コンパクト%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">🛒 仏壇・仏具セット 楽天</a>
+    </div>
+  </div>
+
+  <!-- エンディングノート -->
+  <div class="affili-card">
+    <div class="affili-card-title">📖 エンディングノート・終活本</div>
+    <div class="affili-card-desc">葬儀が終わったら、次は自分自身の終活を。元気なうちにエンディングノートをまとめておくと家族への負担が減ります。</div>
+    <div class="affili-grid">
+      <a href="https://www.amazon.co.jp/s?k=エンディングノート+書き込み式&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">🛒 エンディングノート Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2Fエンディングノート%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">🛒 エンディングノート 楽天</a>
+      <a href="https://www.amazon.co.jp/s?k=相続+手続き+本+わかりやすい&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon" style="font-size:15px;padding:12px;">📚 相続・手続き本 Amazon</a>
+      <a href="https://hb.afl.rakuten.co.jp/ichiba/5460b4b0.d6b4f3ad.5460b4b1.58633ff3/?pc=https%3A%2F%2Fsearch.rakuten.co.jp%2Fsearch%2Fmall%2F相続%20手続き%20本%2F&link_type=text" rel="nofollow" target="_blank" class="affili-btn btn-rakuten" style="font-size:15px;padding:12px;">📚 相続・手続き本 楽天</a>
+    </div>
+  </div>
+
 </div>
 
 <!-- カテゴリ -->
@@ -314,135 +434,147 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
   <div class="section-title">カテゴリから探す</div>
   <div class="section-sub">状況に合わせて、必要な情報を探してみてください</div>
   <div class="cat-grid">
-    <a href="#" class="cat-card">
-      <div class="cat-icon">⏰</div>
-      <div class="cat-name">逝去直後・72時間</div>
-      <div class="cat-desc">死亡診断書・搬送・葬儀社選び・安置までの流れ</div>
-      <span class="cat-tag urgent-tag">緊急</span>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🙏</div>
-      <div class="cat-name">危篤・余命宣告</div>
-      <div class="cat-desc">今から準備できること・葬儀社への事前相談・喪服準備</div>
-      <span class="cat-tag">事前準備</span>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🎌</div>
-      <div class="cat-name">宗派・家紋・マナー</div>
-      <div class="cat-desc">お布施相場・焼香回数・地域のしきたり・家紋の調べ方</div>
-      <span class="cat-tag">知識</span>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">👔</div>
-      <div class="cat-name">喪服・急ぎの準備</div>
-      <div class="cat-desc">翌日届く喪服・数珠・香典袋・袱紗の選び方</div>
-      <span class="cat-tag">Amazon・楽天</span>
-    </a>
-    <a href="#" class="cat-card">
+    <a href="column/sougi-cost.html" class="cat-card">
       <div class="cat-icon">💴</div>
       <div class="cat-name">葬儀費用・相場</div>
       <div class="cat-desc">家族葬・一般葬・直葬の費用比較と節約ポイント</div>
       <span class="cat-tag">比較</span>
     </a>
-    <a href="#" class="cat-card">
+    <a href="column/sougi-type.html" class="cat-card">
+      <div class="cat-icon">⛩️</div>
+      <div class="cat-name">葬儀の種類</div>
+      <div class="cat-desc">家族葬・一般葬・直葬・お別れ会の違いと選び方</div>
+      <span class="cat-tag">比較</span>
+    </a>
+    <a href="column/tetsuzuki.html" class="cat-card">
       <div class="cat-icon">📝</div>
       <div class="cat-name">葬儀後の手続き一覧</div>
       <div class="cat-desc">死亡届・年金・銀行・相続の手続き順番と必要書類</div>
       <span class="cat-tag">チェックリスト</span>
     </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🏦</div>
-      <div class="cat-name">相続・銀行・不動産</div>
-      <div class="cat-desc">口座凍結・遺産分割・不動産名義変更の進め方</div>
-      <span class="cat-tag">A8アフィリ</span>
+    <a href="column/mosho-junbi.html" class="cat-card">
+      <div class="cat-icon">👔</div>
+      <div class="cat-name">喪服・急ぎの準備</div>
+      <div class="cat-desc">翌日届く喪服・数珠・香典袋・袱紗の選び方</div>
+      <span class="cat-tag urgent-tag">急ぎ</span>
     </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">📱</div>
-      <div class="cat-name">デジタル遺品整理</div>
-      <div class="cat-desc">スマホのロック・ネット銀行・サブスク解約の手順</div>
-      <span class="cat-tag">現代の悩み</span>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🏠</div>
-      <div class="cat-name">空き家・遺品整理</div>
-      <div class="cat-desc">実家の片付け・売却・遺品整理業者の選び方</div>
-      <span class="cat-tag">A8アフィリ</span>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">⚖️</div>
-      <div class="cat-name">相続・専門家に相談</div>
-      <div class="cat-desc">司法書士・税理士・行政書士への相談窓口</div>
-      <span class="cat-tag">専門家送客</span>
-    </a>
-    <a href="#" class="cat-card">
+    <a href="column/ending-note.html" class="cat-card">
       <div class="cat-icon">📖</div>
       <div class="cat-name">エンディングノート</div>
       <div class="cat-desc">元気なうちに準備できる「もしもノート」の書き方</div>
       <span class="cat-tag">Amazon・楽天</span>
     </a>
     <a href="#" class="cat-card">
-      <div class="cat-icon">💚</div>
-      <div class="cat-name">グリーフケア・心のケア</div>
-      <div class="cat-desc">大切な人を失った後の心の整理・サポート窓口</div>
-      <span class="cat-tag">情報記事</span>
+      <div class="cat-icon">🎌</div>
+      <div class="cat-name">宗派・マナー</div>
+      <div class="cat-desc">お布施相場・焼香回数・地域のしきたり</div>
+      <span class="cat-tag">準備中</span>
+    </a>
+    <a href="#" class="cat-card">
+      <div class="cat-icon">🏦</div>
+      <div class="cat-name">相続・銀行・不動産</div>
+      <div class="cat-desc">口座凍結・遺産分割・不動産名義変更の進め方</div>
+      <span class="cat-tag">準備中</span>
+    </a>
+    <a href="#" class="cat-card">
+      <div class="cat-icon">📱</div>
+      <div class="cat-name">デジタル遺品整理</div>
+      <div class="cat-desc">スマホのロック・ネット銀行・サブスク解約の手順</div>
+      <span class="cat-tag">準備中</span>
     </a>
   </div>
 </div>
 
-<!-- アフィリエイト開示 -->
+<!-- コラム -->
+<div class="column-section" id="column">
+  <div class="column-section-title">📚 葬儀コラム</div>
+  <div class="column-section-sub">はじめての葬儀で悩む疑問を解説します</div>
+  <div class="column-grid">
+    <div class="column-card">
+      <span class="column-tag">費用</span>
+      <h3 onclick="location.href='column/sougi-cost.html'">葬儀費用の相場——家族葬・一般葬・直葬を徹底比較 →</h3>
+      <p>「葬儀にどのくらいかかるの？」家族葬・一般葬・直葬の費用相場と、節約できるポイントを解説します。</p>
+      <a href="column/sougi-cost.html" class="read-more-btn">📖 続きを読む</a>
+    </div>
+    <div class="column-card">
+      <span class="column-tag">種類・選び方</span>
+      <h3 onclick="location.href='column/sougi-type.html'">葬儀の種類と選び方——家族葬・一般葬・直葬の違い →</h3>
+      <p>葬儀の種類が多くてどれを選べばいいかわからない方へ。それぞれの特徴・向いているケースを比較します。</p>
+      <a href="column/sougi-type.html" class="read-more-btn">📖 続きを読む</a>
+    </div>
+    <div class="column-card">
+      <span class="column-tag">手続き</span>
+      <h3 onclick="location.href='column/tetsuzuki.html'">葬儀後の手続き完全ガイド——役所・銀行・年金の順番 →</h3>
+      <p>葬儀が終わったら何をすればいい？死亡届から相続まで、手続きの優先順位と期限を整理します。</p>
+      <a href="column/tetsuzuki.html" class="read-more-btn">📖 続きを読む</a>
+    </div>
+    <div class="column-card">
+      <span class="column-tag urgent-tag">急ぎ</span>
+      <h3 onclick="location.href='column/mosho-junbi.html'">喪服・数珠が手元にない！急ぎで準備する方法 →</h3>
+      <p>突然の訃報で喪服がない方へ。翌日届く喪服・数珠・袱紗・香典袋の探し方と選び方を解説します。</p>
+      <a href="column/mosho-junbi.html" class="read-more-btn">📖 続きを読む</a>
+    </div>
+    <div class="column-card">
+      <span class="column-tag">終活</span>
+      <h3 onclick="location.href='column/ending-note.html'">エンディングノートの書き方——何を書けばいい？ →</h3>
+      <p>葬儀を経験すると「自分も準備しなければ」と思う方が多いです。エンディングノートで何を残すべきかを解説。</p>
+      <a href="column/ending-note.html" class="read-more-btn">📖 続きを読む</a>
+    </div>
+  </div>
+</div>
+
+<!-- 書籍 -->
+<div class="books-section">
+  <div class="books-card">
+    <h3>📚 葬儀・相続・終活のおすすめ書籍</h3>
+    <p>はじめての葬儀・手続き・相続に役立つ本をAmazon・楽天で探せます。</p>
+    <a href="https://www.amazon.co.jp/s?k=葬儀+手続き+本+初めて&tag=sincere1229-22" rel="nofollow" target="_blank" class="books-btn">🛒 Amazonで葬儀・終活本を探す</a>
+  </div>
+</div>
+
+<!-- アフィリ開示 -->
 <div class="affili-note">
   <div class="affili-box">
-    📢 <strong>アフィリエイト開示</strong>：当サイトは一部のリンクにアフィリエイト広告（Amazon・楽天市場・A8.net等）を含む場合があります。紹介料はサイト運営に充てられますが、掲載内容の公正性には影響しません。
+    📢 <strong>アフィリエイト開示</strong>：当サイトはAmazon・楽天市場・A8.netのアフィリエイトプログラムに参加しています。リンク経由でご購入いただいた場合、当サイトに紹介料が発生することがありますが、掲載内容の公正性には影響しません。
   </div>
 </div>
 
 <!-- 免責 -->
 <div class="disclaimer" id="disclaimer">
   <div class="disclaimer-box">
-    ⚠️ <strong>免責事項</strong>：当サイトのAI相談および記事は、一般的な情報提供を目的としています。宗派・地域・状況により最適な選択は異なります。「〜の傾向があります」「〜の可能性があります」という表現は断定ではありません。法的・専門的な判断は、司法書士・税理士・葬儀社等の専門家にご相談ください。
+    ⚠️ <strong>免責事項</strong>：当サイトのAI相談および記事は、一般的な情報提供を目的としています。宗派・地域・状況により最適な選択は異なります。法的・専門的な判断は、司法書士・税理士・葬儀社等の専門家にご相談ください。
   </div>
 </div>
 
 <footer>
-  <div>葬儀ナビ｜はじめての喪主・葬儀後の手続きをAIと整理</div>
-  <div style="margin-top:8px"><a href="#">プライバシーポリシー</a>　<a href="#">お問い合わせ</a></div>
-  <div style="margin-top:8px;font-size:11px">© 2026 葬儀ナビ. Powered by Twinkle Lab / ASlink株式会社</div>
+  <div class="footer-nav">
+    <a href="about.html">運営者情報</a>
+    <a href="https://jikka-navi.net">実家どうするナビ</a>
+    <a href="https://kaigo-anshin.net">やさしい介護ナビ</a>
+    <a href="https://twitter.com/twinklelab_jp">X @twinklelab_jp</a>
+  </div>
+  <div>葬儀ナビ｜はじめての喪主・葬儀後の手続きを登録不要で整理</div>
+  <div style="margin-top:6px;">運営：Twinkle Lab（ぴよ子）｜© 2026 葬儀ナビ</div>
 </footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲ トップへ</button>
 
 <script>
 const sel = {};
 let currentMode = '';
 
-const AFFILI_LINKS = {
-  urgent: [
-    { icon:'👔', label:'今すぐ必要：翌日届く喪服フルセット', sub:'Amazonプライム対応・サイズ多数', badge:'急ぎ', url:'https://www.amazon.co.jp/s?k=喪服+セット&tag=sincere1229-22' },
-    { icon:'📿', label:'数珠・袱紗・香典袋セット', sub:'まとめて準備できるセット商品', badge:'', url:'https://www.amazon.co.jp/s?k=数珠+袱紗+セット&tag=sincere1229-22' },
-    { icon:'⛩️', label:'地域の葬儀社を比較・相談（無料）', sub:'よりそうお葬式・いい葬儀で資料請求', badge:'無料', url:'https://www.yorisou.jp/' }
-  ],
-  kikiyu: [
-    { icon:'👔', label:'喪服を今のうちに準備する', sub:'余裕があるうちにサイズ確認・購入を', badge:'事前準備', url:'https://www.amazon.co.jp/s?k=喪服&tag=sincere1229-22' },
-    { icon:'⛩️', label:'葬儀社に今から事前相談（無料）', sub:'事前相談は無料・急がなくて大丈夫', badge:'無料', url:'https://www.yorisou.jp/' },
-    { icon:'📖', label:'エンディングノートで本人の希望を記録', sub:'本人と一緒に書ける終活ノート', badge:'', url:'https://www.amazon.co.jp/s?k=エンディングノート&tag=sincere1229-22' }
-  ],
-  tetsuzuki: [
-    { icon:'⚖️', label:'相続・手続きを専門家に相談（無料）', sub:'司法書士・税理士への無料相談窓口', badge:'無料', url:'#' },
-    { icon:'📱', label:'デジタル遺品・スマホ解約サポート', sub:'スマホのデータ取り出し・解約手続き', badge:'', url:'#' },
-    { icon:'🏠', label:'遺品整理・空き家の片付け相談', sub:'遺品整理業者の比較・見積もり', badge:'', url:'#' }
-  ]
-};
+function pick(el, group, mode) {
+  const selClass = mode === 'urgent' ? 'sel-urgent' : mode === 'kikiyu' ? 'sel-kikiyu' : 'sel';
+  el.closest('.chips').querySelectorAll('.chip').forEach(c => c.classList.remove('sel','sel-urgent','sel-kikiyu'));
+  el.classList.add(selClass);
+  sel[group] = el.textContent.trim();
+}
 
 function showMode(mode) {
   currentMode = mode;
   document.getElementById('ai-section').style.display = 'block';
   document.getElementById('ai-section').scrollIntoView({behavior:'smooth', block:'start'});
-
-  // 全モード非表示
-  ['urgent','kikiyu','tetsuzuki'].forEach(m => {
-    document.getElementById('mode-' + (m === 'urgent' ? 'urgent' : m)).style.display = 'none';
-  });
-  document.getElementById('mode-urgent').style.display = 'none';
-  document.getElementById('mode-kikiyu').style.display = 'none';
-  document.getElementById('mode-tetsuzuki').style.display = 'none';
+  ['mode-urgent','mode-kikiyu','mode-tetsuzuki'].forEach(m => document.getElementById(m).style.display = 'none');
 
   const header = document.getElementById('ai-header');
   const icon = document.getElementById('ai-header-icon');
@@ -472,158 +604,119 @@ function showMode(mode) {
     sub.textContent = '必要な手続きを最短ルートで整理します。';
     btn.className = 'btn-ask';
   }
-
   document.getElementById('response-wrap').style.display = 'none';
 }
 
 function hideMode() {
   document.getElementById('ai-section').style.display = 'none';
   document.getElementById('situation').scrollIntoView({behavior:'smooth'});
-  currentMode = '';
-}
-
-function pick(el, group, mode) {
-  const selClass = mode === 'urgent' ? 'sel-urgent' : mode === 'kikiyu' ? 'sel-kikiyu' : 'sel';
-  el.closest('.chips').querySelectorAll('.chip').forEach(c => {
-    c.classList.remove('sel','sel-urgent','sel-kikiyu');
-  });
-  el.classList.add(selClass);
-  sel[group] = el.textContent.trim();
 }
 
 async function askAI() {
-  // 手続きモードの免責チェック
-  if (currentMode === 'tetsuzuki') {
-    const agreed = document.getElementById('disclaimer-agree').checked;
-    if (!agreed) {
-      alert('下の免責事項に同意してから続けてください。');
-      return;
-    }
-  }
-
   const btn = document.getElementById('btn-ask');
   btn.disabled = true;
-
   const wrap = document.getElementById('response-wrap');
   const txt = document.getElementById('response-text');
   const footer = document.getElementById('response-footer');
-  const affili = document.getElementById('affili-links');
-
+  const affili = document.getElementById('ai-affili');
   wrap.style.display = 'block';
   txt.innerHTML = '<span class="loading-dots"><span>●</span><span>●</span><span>●</span></span> AIが整理しています…';
   footer.style.display = 'none';
-  affili.style.display = 'none';
+  if(affili) affili.style.display = 'none';
 
   let prompt = '';
-  let affiliMode = '';
 
   if (currentMode === 'hospital' || currentMode === 'home') {
     const place = sel['place'] || '未回答';
     const religion = sel['religion'] || 'わからない';
     const concern = sel['concern_u'] || '';
     const free = document.getElementById('concern-urgent').value.trim();
-    affiliMode = 'urgent';
-
     prompt = `あなたは「葬儀ナビ」の72時間SOSサポートAIです。
-
 【絶対ルール】
 - 「頑張って」「大丈夫ですよ」など感情的な言葉は禁止
-- まず「今すぐやること」「今日中にやること」「明日でよいこと」の3段階で整理する
-- 宗派・地域の断定は禁止（「〜の傾向があります」「〜の可能性があります」を使う）
+- 「今すぐやること」「今日中にやること」「明日でよいこと」の3段階で整理する
+- 宗派・地域の断定は禁止（「〜の傾向があります」を使う）
 - 費用は断定せず「〜が目安となる傾向があります」と表現
 - 300〜400文字でコンパクトにまとめる
-- 最後に「葬儀社への資料請求・事前相談は無料でできます」と一言添える
-
-【状況】
-- 亡くなられた場所：${place}
-- 宗教・宗派：${religion}
-- 困っていること：${concern}
-- 補足：${free || 'なし'}
-
+- 最後に「葬儀社への事前相談は無料でできます」と一言添える
+【状況】亡くなられた場所：${place}／宗教・宗派：${religion}／困っていること：${concern}／補足：${free || 'なし'}
 今やることを整理してください。`;
 
   } else if (currentMode === 'kikiyu') {
     const status = sel['kikiyu_s'] || '危篤状態';
     const want = sel['kikiyu_w'] || '';
     const free = document.getElementById('concern-kikiyu').value.trim();
-    affiliMode = 'kikiyu';
-
     prompt = `あなたは「葬儀ナビ」の危篤・余命宣告サポートAIです。
-
 【絶対ルール】
 - 感情に寄り添いつつも、具体的な「今できる準備」を提示する
-- 「葬儀社への事前相談は無料でできること」「今から準備しておくと慌てずに済むこと」を伝える
-- 断定表現禁止（「〜の傾向があります」「〜の可能性があります」を使う）
-- 精神的な負担にならない柔らかいトーンで
+- 「葬儀社への事前相談は無料でできること」を伝える
+- 断定表現禁止（「〜の傾向があります」を使う）
 - 300〜400文字でまとめる
-
-【状況】
-- 現在の状況：${status}
-- 準備したいこと：${want}
-- 補足：${free || 'なし'}
-
+【状況】現在の状況：${status}／準備したいこと：${want}／補足：${free || 'なし'}
 今から準備できることを整理してください。`;
 
   } else {
     const days = sel['days'] || '葬儀直後';
     const tetsu = sel['tetsu'] || '';
     const free = document.getElementById('concern-tetsuzuki').value.trim();
-    affiliMode = 'tetsuzuki';
-
     prompt = `あなたは「葬儀ナビ」の葬儀後手続きサポートAIです。
-
 【絶対ルール】
 - 手続きの優先順位と期限を明確に整理する
 - 「役所→年金→銀行」などの順番を具体的に示す
-- 法的・税務的な断定は禁止（「〜の傾向があります」「専門家へのご相談をお勧めします」を使う）
+- 法的・税務的な断定は禁止
 - 相続・不動産は必ず「司法書士・税理士への相談をお勧めします」と添える
 - 300〜400文字でコンパクトにまとめる
-
-【状況】
-- 葬儀からの経過：${days}
-- 困っている手続き：${tetsu}
-- 補足：${free || 'なし'}
-
+【状況】葬儀からの経過：${days}／困っている手続き：${tetsu}／補足：${free || 'なし'}
 手続きの順番と優先度を整理してください。`;
   }
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/api/chat', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1000,
-        messages: [{ role: 'user', content: prompt }]
-      })
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: [{ role: 'user', content: prompt }], max_tokens: 1000 })
     });
     const data = await res.json();
-    const text = data.content?.map(b => b.text || '').join('') || 'エラーが発生しました。';
-    txt.textContent = text;
+    console.log('API response:', JSON.stringify(data));
+    let text = '';
+    if (data.content && Array.isArray(data.content)) {
+      text = data.content.map(b => b.text || '').join('').trim();
+    } else if (data.error) {
+      text = 'エラー：' + (data.error.message || JSON.stringify(data.error));
+    } else {
+      text = JSON.stringify(data);
+    }
+    txt.textContent = text || 'AIからの応答を受信できませんでした。';
     footer.style.display = 'block';
 
-    // アフィリリンク表示
-    if (AFFILI_LINKS[affiliMode]) {
-      affili.innerHTML = AFFILI_LINKS[affiliMode].map(l => `
-        <a href="${l.url}" target="_blank" rel="noopener" class="affili-card">
-          <div class="affili-card-icon">${l.icon}</div>
-          <div class="affili-card-text">
-            <strong>${l.label}${l.badge ? `<span class="affili-card-badge">${l.badge}</span>` : ''}</strong>
-            ${l.sub}
-          </div>
-        </a>
-      `).join('');
+    // 状況別アフィリリンク
+    if (currentMode === 'hospital' || currentMode === 'home') {
+      affili.innerHTML = `<div class="ai-affili-title">💡 今すぐ必要なもの</div>
+        <a href="https://www.amazon.co.jp/s?k=喪服+レディース+セット&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon">🛒 喪服（女性）を今すぐ確認</a>
+        <a href="https://www.amazon.co.jp/s?k=喪服+メンズ+礼服&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon">🛒 喪服（男性）を今すぐ確認</a>
+        <a href="https://www.amazon.co.jp/s?k=数珠+袱紗+香典袋+セット&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon">🛒 数珠・袱紗・香典袋セット</a>`;
+      affili.style.display = 'grid';
+    } else if (currentMode === 'kikiyu') {
+      affili.innerHTML = `<div class="ai-affili-title">💡 今から準備しておきたいもの</div>
+        <a href="https://www.amazon.co.jp/s?k=喪服+レディース&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon">🛒 喪服を今のうちに準備（Amazon）</a>
+        <a href="https://www.amazon.co.jp/s?k=エンディングノート&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-gold">📖 エンディングノートで本人の希望を記録</a>`;
+      affili.style.display = 'grid';
+    } else {
+      affili.innerHTML = `<div class="ai-affili-title">💡 手続きに役立つ書籍</div>
+        <a href="https://www.amazon.co.jp/s?k=相続+手続き+本&tag=sincere1229-22" rel="nofollow" target="_blank" class="affili-btn btn-amazon">📚 相続・手続き本（Amazon）</a>
+        <a href="column/tetsuzuki.html" class="affili-btn btn-navy">📖 葬儀後の手続きガイドを読む</a>`;
       affili.style.display = 'grid';
     }
   } catch(e) {
-    txt.textContent = 'エラーが発生しました。しばらくしてから再度お試しください。';
+    txt.textContent = 'エラーが発生しました。（' + e.message + '）';
   }
-
   btn.disabled = false;
 }
+
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('backToTop');
+  btn.classList.toggle('visible', window.scrollY > 300);
+});
 </script>
 </body>
 </html>
