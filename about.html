@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>運営者情報｜Twinkle Lab</title>
+<meta name="description" content="実家どうするナビ・介護ナビ・葬儀ナビを運営するTwinkle Labの運営者情報・サイトポリシーです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #1a7a5e; --green-light: #e8f5f0; --green-mid: #2d9e7a;
+  --amber: #e07b39; --border: #e0ddd8; --text: #1a1a1a; --text-sub: #6b6b6b;
+  --white: #ffffff; --gray-light: #f5f5f3; --radius: 12px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: #fafaf8; font-size: 18px; line-height: 1.85; }
+
+header { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 20px; display: flex; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 100; }
+.logo-mark { width: 36px; height: 36px; background: var(--green); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.logo-text { font-size: 20px; font-weight: 700; color: var(--green); }
+.logo-sub { font-size: 13px; color: var(--text-sub); }
+.logo-link { text-decoration: none; display: flex; align-items: center; gap: 10px; }
+
+.wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+.page-tag { display: inline-block; background: var(--green-light); color: var(--green); font-size: 14px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 14px; }
+.page-title { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 4vw, 30px); line-height: 1.5; margin-bottom: 32px; }
+
+/* ミッションボックス */
+.mission-box {
+  background: linear-gradient(135deg, #1a7a5e, #2d9e7a);
+  color: white;
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.mission-box h2 { font-family: 'Noto Serif JP', serif; font-size: 22px; margin-bottom: 16px; }
+.mission-box p { font-size: 16px; opacity: 0.95; line-height: 1.85; }
+.mission-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+/* なぜ作ったか */
+.reason-box {
+  background: var(--white);
+  border: 2px solid var(--green);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin-bottom: 32px;
+}
+.reason-box h2 { font-size: 20px; font-weight: 700; color: var(--green); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.reason-box p { font-size: 17px; line-height: 1.9; margin-bottom: 14px; }
+.reason-box p:last-child { margin-bottom: 0; }
+.highlight { background: #fff3cd; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+
+/* 運営サイト一覧 */
+.sites-grid { display: grid; gap: 16px; margin-bottom: 32px; }
+.site-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.site-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+.site-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+.site-name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+.site-desc { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
+.site-url { font-size: 13px; color: var(--green); margin-top: 4px; }
+
+/* 運営者情報テーブル */
+.info-section { margin-bottom: 32px; }
+.info-section h2 { font-size: 20px; font-weight: 700; color: var(--green); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--green-light); }
+.info-table { width: 100%; border-collapse: collapse; }
+.info-table tr { border-bottom: 1px solid var(--border); }
+.info-table th { padding: 14px 16px; text-align: left; font-size: 15px; font-weight: 500; color: var(--text-sub); background: var(--gray-light); width: 35%; vertical-align: top; }
+.info-table td { padding: 14px 16px; font-size: 16px; line-height: 1.7; }
+
+/* アフィリ開示 */
+.disclosure-box {
+  background: var(--gray-light);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 24px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-sub);
+}
+.disclosure-box h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+
+/* 免責 */
+.disclaimer-box {
+  background: #fff8e1;
+  border: 1px solid #ffc107;
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 32px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.disclaimer-box h3 { font-size: 16px; font-weight: 700; color: #856404; margin-bottom: 10px; }
+
+footer { background: var(--white); border-top: 1px solid var(--border); padding: 32px 20px; text-align: center; font-size: 14px; color: var(--text-sub); line-height: 2; }
+.footer-nav { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+.footer-nav a { color: var(--green); text-decoration: none; font-size: 14px; }
+.footer-nav a:hover { text-decoration: underline; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 0.5s ease forwards; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark">🌟</div>
+  <div>
+    <div class="logo-text">Twinkle Lab</div>
+    <div class="logo-sub">実家ナビ・介護ナビ・葬儀ナビ 運営</div>
+  </div>
+</header>
+
+<div class="wrap fade-in">
+
+  <div class="page-tag">📋 運営者情報</div>
+  <h1 class="page-title">Twinkle Lab について</h1>
+
+  <!-- ミッション -->
+  <div class="mission-box">
+    <div class="mission-badge">🌟 私たちのミッション</div>
+    <h2>「登録なし・個人情報不要」で<br>正しい情報を届ける</h2>
+    <p>
+      実家・介護・葬儀……人生の大事な場面で必要な情報は、<br>
+      メールアドレスや個人情報を登録しなくても<br>
+      誰でも無料で手に入れられるべきだと考えています。
+    </p>
+  </div>
+
+  <!-- なぜ作ったか -->
+  <div class="reason-box">
+    <h2>💡 なぜこのサイトを作ったのか</h2>
+    <p>
+      「親の実家を売ると、いくらになるんだろう」と思って不動産サイトを調べると、必ずこうなります——<span class="highlight">「無料査定はこちら→氏名・電話番号・メールアドレスを入力」</span>。
+    </p>
+    <p>
+      個人情報を入力した瞬間から、複数の不動産会社から電話やメールが来る。でも本当は、<strong>「大体どのくらいの価値か」を知りたいだけ</strong>なのに。
+    </p>
+    <p>
+      介護施設も、葬儀費用も同じです。「まず資料請求を」「無料相談の予約を」——情報を得るために、まず個人情報を差し出さなければならない構造になっています。
+    </p>
+    <p>
+      <strong>Twinkle Labのナビシリーズは、この問題を解決するために作りました。</strong>登録不要・個人情報不要で、まず「選択肢」と「おおよその目安」を知ってもらう。その上で、必要なら専門家に相談する——この順番で動けるサイトを目指しています。
+    </p>
+  </div>
+
+  <!-- 運営サイト一覧 -->
+  <div class="info-section">
+    <h2>🌐 運営サイト一覧</h2>
+    <div class="sites-grid">
+      <a href="https://jikka-navi.net" class="site-card">
+        <div class="site-icon" style="background:#e8f5f0;">🏠</div>
+        <div>
+          <div class="site-name">実家どうするナビ</div>
+          <div class="site-desc">親の実家・空き家・相続を家族で整理する。売却・賃貸・リバースモーゲージ・住み続けるを中立比較。</div>
+          <div class="site-url">jikka-navi.net</div>
+        </div>
+      </a>
+      <a href="https://kaigo-anshin.net" class="site-card">
+        <div class="site-icon" style="background:#fff0f5;">💗</div>
+        <div>
+          <div class="site-name">やさしい介護ナビ</div>
+          <div class="site-desc">介護施設の種類・費用・選び方を中立比較。登録不要で施設タイプ別の目安がわかる。</div>
+          <div class="site-url">kaigo-anshin.net</div>
+        </div>
+      </a>
+      <a href="https://sougi-navi.vercel.app" class="site-card">
+        <div class="site-icon" style="background:#f5f0ff;">🕊️</div>
+        <div>
+          <div class="site-name">葬儀ナビ</div>
+          <div class="site-desc">葬儀の種類・費用・手続きを中立比較。はじめての葬儀でも安心して選べる情報を提供。</div>
+          <div class="site-url">sougi-navi.vercel.app</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- 運営者情報 -->
+  <div class="info-section">
+    <h2>👤 運営者情報</h2>
+    <table class="info-table">
+      <tr>
+        <th>運営者名</th>
+        <td>Twinkle Lab（ツインクル ラボ）</td>
+      </tr>
+      <tr>
+        <th>運営者</th>
+        <td>中村 恵子（ぴよ子）</td>
+      </tr>
+      <tr>
+        <th>活動拠点</th>
+        <td>埼玉県</td>
+      </tr>
+      <tr>
+        <th>主な経歴</th>
+        <td>飲食店経営30年以上・ハラル食品会社（ASlink株式会社）取締役・AI活用コンテンツ制作</td>
+      </tr>
+      <tr>
+        <th>X（旧Twitter）</th>
+        <td><a href="https://twitter.com/twinklelab_jp" style="color:var(--green);">@twinklelab_jp</a></td>
+      </tr>
+      <tr>
+        <th>note</th>
+        <td><a href="https://note.com/" style="color:var(--green);">Twinkle Lab🐣</a></td>
+      </tr>
+      <tr>
+        <th>お問い合わせ</th>
+        <td>X（@twinklelab_jp）のDMにてお受けしています</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- アフィリエイト開示 -->
+  <div class="disclosure-box">
+    <h3>📢 アフィリエイト広告について</h3>
+    <p>
+      当サイト群（実家どうするナビ・やさしい介護ナビ・葬儀ナビ）は、<strong>A8.net・Amazonアソシエイト</strong>のアフィリエイトプログラムに参加しています。
+    </p>
+    <p style="margin-top:10px;">
+      リンク経由でサービスへの問い合わせや商品のご購入が発生した場合、当サイトに紹介料が支払われることがあります。ただし、<strong>紹介料はサービスの内容や掲載順序に一切影響しません。</strong>中立な情報提供を第一に運営しています。
+    </p>
+    <p style="margin-top:10px;">
+      紹介料はサイトの運営費・コンテンツ制作費に充てています。
+    </p>
+  </div>
+
+  <!-- 免責事項 -->
+  <div class="disclaimer-box">
+    <h3>⚠️ 免責事項・ご注意</h3>
+    <p>
+      当サイトで提供する情報（資産価値の試算・費用の目安・選択肢の比較等）は、<strong>一般的な情報提供を目的とした参考値</strong>です。実際の不動産価格・介護費用・葬儀費用は個別の状況によって大きく異なります。
+    </p>
+    <p style="margin-top:10px;">
+      当サイトは不動産の仲介行為・金融商品の勧誘・個別の法的・税務的判断を行うものではありません。最終的なご判断は、必ず不動産会社・FP・税理士・弁護士・介護相談員等の専門家にご相談ください。
+    </p>
+    <p style="margin-top:10px;">
+      掲載情報は作成時点のものであり、法改正等により変更になる場合があります。最新情報は各公的機関・専門家にご確認ください。
+    </p>
+  </div>
+
+  <!-- プライバシー -->
+  <div class="info-section">
+    <h2>🔒 個人情報の取り扱い</h2>
+    <p style="font-size:16px;line-height:1.9;">
+      当サイトでは診断ツールの利用にあたり、<strong>氏名・メールアドレス・電話番号等の個人情報は一切収集しません。</strong>入力された郵便番号・建物情報はブラウザ上でのみ処理され、サーバーには保存されません。
+    </p>
+    <p style="font-size:16px;line-height:1.9;margin-top:12px;">
+      なお、Google Analytics等のアクセス解析ツールを使用する場合があります。これらのツールはCookieを使用してデータを収集しますが、個人を特定する情報は含まれません。
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-nav">
+    <a href="https://jikka-navi.net">実家どうするナビ</a>
+    <a href="https://kaigo-anshin.net">やさしい介護ナビ</a>
+    <a href="https://sougi-navi.vercel.app">葬儀ナビ</a>
+    <a href="about.html">運営者情報</a>
+  </div>
+  <div>Twinkle Lab（ツインクル ラボ）</div>
+  <div style="margin-top:4px;">© 2026 Twinkle Lab. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
