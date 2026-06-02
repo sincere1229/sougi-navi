@@ -658,6 +658,7 @@ async function askAI() {
 - 費用は断定せず「〜が目安となる傾向があります」と表現
 - 300〜400文字でコンパクトにまとめる
 - 最後に「葬儀社への事前相談は無料でできます」と一言添える
+- マークダウン記法（**太字**・##見出し・-リスト）は使わずプレーンテキストで回答する
 【状況】亡くなられた場所：${place}／宗教・宗派：${religion}／困っていること：${concern}／補足：${free || 'なし'}
 今やることを整理してください。`;
 
@@ -671,6 +672,7 @@ async function askAI() {
 - 「葬儀社への事前相談は無料でできること」を伝える
 - 断定表現禁止（「〜の傾向があります」を使う）
 - 300〜400文字でまとめる
+- マークダウン記法は使わずプレーンテキストで回答する
 【状況】現在の状況：${status}／準備したいこと：${want}／補足：${free || 'なし'}
 今から準備できることを整理してください。`;
 
@@ -685,6 +687,7 @@ async function askAI() {
 - 法的・税務的な断定は禁止
 - 相続・不動産は必ず「司法書士・税理士への相談をお勧めします」と添える
 - 300〜400文字でコンパクトにまとめる
+- マークダウン記法は使わずプレーンテキストで回答する
 【状況】葬儀からの経過：${days}／困っている手続き：${tetsu}／補足：${free || 'なし'}
 手続きの順番と優先度を整理してください。`;
   }
@@ -705,7 +708,14 @@ async function askAI() {
     } else {
       text = JSON.stringify(data);
     }
-    txt.textContent = text || 'AIからの応答を受信できませんでした。';
+    // マークダウン→HTML変換
+    const formatted = (text || 'AIからの応答を受信できませんでした。')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/^## (.+)$/gm, '<h4 style="color:var(--navy);margin:14px 0 6px;font-size:16px;">$1</h4>')
+      .replace(/^### (.+)$/gm, '<strong style="display:block;margin:10px 0 4px;">$1</strong>')
+      .replace(/^- (.+)$/gm, '・$1')
+      .replace(/\n/g, '<br>');
+    txt.innerHTML = formatted;
     footer.style.display = 'block';
 
     // 状況別アフィリリンク
